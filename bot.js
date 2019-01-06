@@ -31,12 +31,12 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
 
      // User Joins a voice channel
-	 message.channel.send('Joined chat')
+	 guildObj.defaultChannel.send('Joined Chat');
 
   } else if(newUserChannel === undefined){
 
     // User leaves a voice channel
-	message.channel.send('Left chat')
+	guildObj.defaultChannel.send('Left Chat');
 
   }
 })
