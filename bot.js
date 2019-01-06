@@ -22,8 +22,8 @@ client.on('message', message => {
 
 });
 
-/*
-bot.on('voiceStateUpdate', (oldMember, newMember) => {
+
+client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
 
@@ -40,7 +40,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
 
   }
 });
-*/ 
+
 
 // THIS  MUST  BE  THIS  WAY
 
