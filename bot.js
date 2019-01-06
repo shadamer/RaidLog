@@ -22,6 +22,24 @@ client.on('message', message => {
 
 });
 
+
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+  let newUserChannel = newMember.voiceChannel
+  let oldUserChannel = oldMember.voiceChannel
+
+
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
+
+     // User Joins a voice channel
+	 message.channel.send('Joined chat')
+
+  } else if(newUserChannel === undefined){
+
+    // User leaves a voice channel
+	message.channel.send('Left chat')
+
+  }
+})
  
 
 // THIS  MUST  BE  THIS  WAY
