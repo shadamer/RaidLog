@@ -31,11 +31,12 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
 
      // User Joins a voice channel
-	 
+	 client.message.send(author, "Joined Channel");
 
   } else if(newUserChannel === undefined){
 
     // User leaves a voice channel
+	client.message.send(author, "Left Channel");
 	
 
   }
