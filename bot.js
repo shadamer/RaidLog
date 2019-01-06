@@ -39,7 +39,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
 	
 
   }
-})
+});
  
 
 // THIS  MUST  BE  THIS  WAY
