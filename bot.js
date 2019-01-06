@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-
-const client = new Discord.Client();
+const Discord = require('discord.js');	// required for Discord functions
+const fs = require("fs");		// required for file I/O
+const client = new Discord.Client();		// this is the actual Bot
 
  
 
