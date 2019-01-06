@@ -38,7 +38,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
-	client.channels.find('General').send("Left Channel");
+	client.channels.find('general').send("Left Channel");
 	
 
   }
