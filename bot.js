@@ -32,16 +32,16 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
-	 client.channels.find("name", "general").send(newMember + " Joined Channel " + newUserChannel);
+	 client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
 
   } else if(newUserChannel === undefined){
 
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
-	client.channels.find("name", "general").send(oldMember + " Left Channel " + oldUserChannel);
+	client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
   } else{
-	  client.channels.find("name", "general").send(oldMember + " Left Channel " + oldUserChannel);
-	  client.channels.find("name", "general").send(newMember + " Joined Channel " + newUserChannel);
+	  client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+	  client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
 	  
   }
   
