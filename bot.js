@@ -29,7 +29,7 @@ client.on('message', message => {
 		//message.reply(server);
 		
 		//message.reply('guild');
-		message.reply("Guild: [" + guild.name + "]");
+		//message.reply("Guild: [" + guild.name + "]");
 	}
 
 });
