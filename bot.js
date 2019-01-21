@@ -28,8 +28,8 @@ client.on('message', message => {
 		//var server = bot.guilds.get(message.guild.id).id;
 		//message.reply(server);
 		
-		message.reply('guild');
-		message.reply(guild.name);
+		//message.reply('guild');
+		message.reply("Guild");
 	}
 
 });
