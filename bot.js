@@ -19,6 +19,15 @@ client.on('message', message => {
        message.reply('pong');
 
        }
+	   
+	if (message.content === 'list'){
+		
+	}
+	
+	if (message.content === 'guild'){
+		var server = bot.guilds.get(message.guild.id).id;
+		message.reply(server);
+	}
 
 });
 
