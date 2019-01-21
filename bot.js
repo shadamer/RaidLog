@@ -27,8 +27,9 @@ client.on('message', message => {
 	if (message.content === 'guild'){
 		//var server = bot.guilds.get(message.guild.id).id;
 		//message.reply(server);
-		//message.reply(guild.name);
+		
 		message.reply('guild');
+		message.reply(guild.name);
 	}
 
 });
