@@ -114,6 +114,29 @@ client.on
 	'voiceStateUpdate',
 	(oldMember, newMember) =>
 	{
+		// shadamer code to write to the raid log
+		if(oldUserChannel === undefined && newUserChannel !== undefined) {
+
+			 // User Joins a voice channel
+			 //client.message.send(author, "Joined Channel");
+			 client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
+
+		  } else if(newUserChannel === undefined){
+
+			// User leaves a voice channel
+			//client.message.send(author, "Left Channel");
+			client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+		  } else if (oldUserChannel === newUserChannel){
+				// user muted or unmuted themselves. Ignore the event.
+		  }  
+		  else{
+			  client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+			  client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
+			  
+		  }
+		
+		
+		//malicious wyvern code to process raid class
 		// member previously wasn't in a voice channel so they must have joined a channel
 		if (!oldMember.voiceChannelID)
 		{
@@ -140,5 +163,5 @@ client.on
 
 		}
 	}
+
 );
- 
