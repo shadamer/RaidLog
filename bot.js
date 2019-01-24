@@ -51,7 +51,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
 	client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
-  } else{
+  } else if (oldUserChannel === newUserChannel){
+		// user muted or unmuted themselves. Ignore the event.
+  }  
+  else{
 	  client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
 	  client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
 	  
