@@ -114,6 +114,9 @@ client.on
 	'voiceStateUpdate',
 	(oldMember, newMember) =>
 	{
+		let newUserChannel = newMember.voiceChannel
+		let oldUserChannel = oldMember.voiceChannel
+  
 		// shadamer code to write to the raid log
 		if(oldUserChannel === undefined && newUserChannel !== undefined) {
 
