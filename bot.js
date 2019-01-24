@@ -37,7 +37,7 @@ class RaidLog
 		members.forEach( (member, duration) => s += member.username + '\t\t' + duration + ' seconds\n' );
 		return report;
 	}
-};
+}
 
 // log the client in
 client.login(process.env.BOT_TOKEN); //BOT_TOKEN is the Client Secret
