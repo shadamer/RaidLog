@@ -21,6 +21,15 @@ class RaidLog
 		let secondsToAdd = (Date.now() - this.lastUpdate) / 1000;
 		this.members.forEach( (member, duration) => duration += secondsToAdd );
 	}
+	
+	// Report the current status
+	getReport()
+	{
+		let report = '';
+
+		members.forEach( (member, duration) => s += member.username + '\t\t' + duration + ' seconds\n' );
+		return report;
+	}
 }
  
 
