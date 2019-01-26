@@ -75,6 +75,62 @@ client.on('message', message => {
 }); // end client.on(message)
 
 
+client.on
+(
+	'message',
+	message =>
+	{
+		// Only try to match command if message begins with specified command prefix
+		if (message.content.search(cmdPrefix) == 0)
+		{
+			// Strip out command prefix
+			let cmdMsg = message.content.substring(1, message.content.length - 1);
+
+
+			// raid start command
+			if 		(cmdMsg === 'raid_start')
+			{
+				// Check privileges of user that sent command here
+
+				// First check if the user who issued the command is in a voice channel
+				// Not sure if empty string or undefined returned
+				if (typeof message.member.voiceChannelID)
+				{
+					// Make sure that a raid isn't already active
+					activeRaids[message.member.voiceChannelID] = new RaidLog(message.member, message.member.voiceChannel);
+				}
+			}
+
+			// raid end command
+			else if (cmdMsg === 'raid_end')
+			{
+				// Check privileges of user that sent command here
+				
+				// Check to see if a raid is registered for the voice channel the author of the message is in
+				if (activeRaids.has(message.member.voiceChannelID))
+				{
+					activeRaids[message.member.voiceChannelID].update();
+
+					client.channels.find('name', 'raidlog').send(activeRaids[message.member.voiceChannel].getReport());
+				}
+				else
+				{
+					// inform user that no raid is registered to the given voice channel
+					client.channels.find('name', 'raidlog').send('No active raid is registered to your current voice channel!');
+				}
+			}
+
+			// move raid command
+			// Move the raid to a different channel without ending the logging session
+			// If a raid is already active in the specified channel, join the two raids together (?)
+			else if (cmdMsg === 'raid_move')
+			{
+
+			}
+		}
+	}
+); // end client.on(message)
+
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
