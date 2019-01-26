@@ -15,7 +15,12 @@ class RaidLog
 		voiceChannel.members.every( member => members[member] = 0 );
 	} // end constructor
 	
-	
+	// Update the duration of each member's presence in the voice channel
+	update()
+	{
+		let secondsToAdd = (Date.now() - this.lastUpdate) / 1000;
+		this.members.forEach( (member, duration) => duration += secondsToAdd );
+	}
 }
  
 
