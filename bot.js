@@ -4,6 +4,16 @@ const client = new Discord.Client();		// this is the actual Bot
 
 class RaidLog
 {
+	constructor(crown, voiceChannel)
+	{
+		this.members 		= new Map();	// history of members that participated in raid: key - member; value - seconds in raid
+		this.crown 			= crown;		// user to which the raid is registered (should be whoever started it)
+		this.voiceChannel 	= voiceChannel;	// channel in which the raid is taking place
+		this.lastUpdate		= Date.now();
+
+		// add each member currently in the voice channel to the map of m
+		//voiceChannel.members.every( member => members[member] = 0 );
+	}
 }
  
 
