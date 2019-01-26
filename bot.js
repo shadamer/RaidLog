@@ -94,6 +94,7 @@ client.on
 			// raid start command
 			if 		(cmdMsg === 'raid_start')
 			{
+				client.channels.find('name', 'raidlog').send('Calling raid_start');
 				// Check privileges of user that sent command here
 
 				// First check if the user who issued the command is in a voice channel
@@ -102,6 +103,7 @@ client.on
 				{
 					// Make sure that a raid isn't already active
 					activeRaids[message.member.voiceChannelID] = new RaidLog(message.member, message.member.voiceChannel);
+					
 				}
 			}
 
@@ -109,6 +111,7 @@ client.on
 			else if (cmdMsg === 'raid_end')
 			{
 				// Check privileges of user that sent command here
+				client.channels.find('name', 'raidlog').send('Calling raid_end');
 				
 				// Check to see if a raid is registered for the voice channel the author of the message is in
 				if (activeRaids.has(message.member.voiceChannelID))
@@ -116,6 +119,7 @@ client.on
 					activeRaids[message.member.voiceChannelID].update();
 
 					client.channels.find('name', 'raidlog').send(activeRaids[message.member.voiceChannel].getReport());
+					
 				}
 				else
 				{
