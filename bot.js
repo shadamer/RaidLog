@@ -30,8 +30,19 @@ class RaidLog
 		members.forEach( (member, duration) => s += member.username + '\t\t' + duration + ' seconds\n' );
 		return report;
 	}
-}
+} // end class RaidLog
  
+ 
+ // Command registration and object instantiation
+// Runs once at login
+client.once
+(
+	'ready',
+	() =>
+	{
+		activeRaids = new Map();
+	}
+); // end client.once
 
 client.on('ready', () => {
 
