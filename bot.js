@@ -2,6 +2,10 @@ const Discord = require('discord.js');	// required for Discord functions
 const fs = require("fs");		// required for file I/O
 const client = new Discord.Client();		// this is the actual Bot
 
+const cmdPrefix = '$'; // should probably persist beyond the instance of the bot so that it can be customized and saved
+
+var activeRaids;	// map representing active raids: key - voice channel; value - 
+
 class RaidLog
 {
 	constructor(crown, voiceChannel)
