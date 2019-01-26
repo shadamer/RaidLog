@@ -64,7 +64,7 @@ client.on
 		
 		//let cmdMsg = message.content.substring(1, message.content.length);
 		//client.channels.find('name', 'raidlog').send('cmdMsg: ' + cmdMsg);
-			
+		/*	
 		// Only try to match command if message begins with specified command prefix
 		if (message.content.startsWith(cmdPrefix))
 		{
@@ -117,7 +117,7 @@ client.on
 
 			}
 		} // end check cmd prefix block
-		
+		*/
 		
 		if (message.content === 'ping') {
 
