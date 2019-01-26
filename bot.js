@@ -65,7 +65,7 @@ client.on
 		if (message.content.search(cmdPrefix) == 0)
 		{
 			// Strip out command prefix
-			let cmdMsg = message.content.substring(1, message.content.length - 1);
+			let cmdMsg = message.content.substring(1, message.content.length);
 			client.channels.find('name', 'raidlog').send('cmdMsg: ' + cmdMsg);
 
 			// raid start command
