@@ -54,29 +54,6 @@ client.on('ready', () => {
 
 }); // end client.on(ready)
 
- 
-
-client.on('message', message => {
-
-    if (message.content === 'ping') {
-
-       message.reply('pong');
-
-       }
-	   
-	if (message.content === 'list'){
-		
-	}
-	
-	if (message.content === 'guild'){
-		//var server = bot.guilds.get(message.guild.id).id;
-		//message.reply(server);
-		
-		//message.reply('guild');
-		//message.reply("Guild: [" + guild.name + "]");
-	}
-
-}); // end client.on(message)
 
 
 client.on
@@ -135,8 +112,29 @@ client.on
 			{
 
 			}
+		} // end check cmd prefix block
+		
+		
+		if (message.content === 'ping') {
+
+			message.reply('pong');
+
 		}
-	}
+	   
+		if (message.content === 'list'){
+			
+		}
+		
+		if (message.content === 'guild'){
+			//var server = bot.guilds.get(message.guild.id).id;
+			//message.reply(server);
+			
+			//message.reply('guild');
+			//message.reply("Guild: [" + guild.name + "]");
+		}
+	} // end message block
+	
+	
 ); // end client.on(message)
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
