@@ -12,8 +12,15 @@ class RaidLog
 		this.lastUpdate		= Date.now();
 
 		// add each member currently in the voice channel to the map of m
-		//voiceChannel.members.every( member => members[member] = 0 );
-	}
+		voiceChannel.members.every( member => members[member] = 0 );
+	} // end constructor
+	
+	// Update the duration of each member's presence in the voice channel
+	function update()
+	{
+		let secondsToAdd = (Date.now() - this.lastUpdate) / 1000;
+		this.members.forEach( (member, duration) => duration += secondsToAdd );
+	} // end update
 }
  
 
@@ -21,7 +28,7 @@ client.on('ready', () => {
 
     console.log('I am ready!');
 
-});
+}); // end client.on(ready)
 
  
 
@@ -45,7 +52,7 @@ client.on('message', message => {
 		//message.reply("Guild: [" + guild.name + "]");
 	}
 
-});
+}); // end client.on(message)
 
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
@@ -73,7 +80,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 	  
   }
   
-});
+}); // end client.on(voicestateupdate)
 
 
 // THIS  MUST  BE  THIS  WAY
