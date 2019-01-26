@@ -62,7 +62,7 @@ client.on
 	message =>
 	{
 		// Only try to match command if message begins with specified command prefix
-		if (message.content.search(cmdPrefix) == 0)
+		if (message.content.startsWith(cmdPrefix))
 		{
 			// Strip out command prefix
 			let cmdMsg = message.content.substring(1, message.content.length);
