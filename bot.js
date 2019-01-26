@@ -62,8 +62,8 @@ client.on
 	message =>
 	{
 		
-		let cmdMsg = message.content.substring(1, message.content.length);
-		client.channels.find('name', 'raidlog').send('cmdMsg: ' + cmdMsg);
+		//let cmdMsg = message.content.substring(1, message.content.length);
+		//client.channels.find('name', 'raidlog').send('cmdMsg: ' + cmdMsg);
 			
 		// Only try to match command if message begins with specified command prefix
 		if (message.content.startsWith(cmdPrefix))
