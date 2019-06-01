@@ -10,11 +10,12 @@ class RaidLog
 {
 	constructor(crown, voiceChannel)
 	{
+		this.raidID			= new string(Date.getFullYear()+Date.getFullMonth()+Date.getFullDate()+getHours()+getMinutes()+getSeconds());
 		this.members 		= new Map();	// history of members that participated in raid: key - member; value - seconds in raid
 		this.crown 			= crown;		// user to which the raid is registered (should be whoever started it)
 		this.voiceChannel 	= voiceChannel;	// channel in which the raid is taking place
-		this.lastUpdate		= Date.now();
-
+		this.lastUpdate		= Date.now();	// start time of a raid
+		this.raidStartTime 	= Date.now();	// end time of a raid
 		// add each member currently in the voice channel to the map of m
 		voiceChannel.members.every( member => members[member] = 0 );
 	} // end constructor
@@ -150,20 +151,28 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
-	 client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
+	 if (newUserChannel !== '#AFK'){
+		client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
+	 }
 
   } else if(newUserChannel === undefined){
 
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
-	client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+	if (oldUserChannel !== '#AFK'){
+		client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+	}
   } else if (oldUserChannel === newUserChannel){
 		// user muted or unmuted themselves. Ignore the event.
   }  
   else{
-	  client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
-	  client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
-	  
+	  // we don't care about AFK
+	  if (oldUserChannel !== '#AFK'){
+		client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
+	  }
+	  if (newUserChannel !== '#AFK'){
+		client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
+	  }
   }
   
 }); // end client.on(voicestateupdate)
