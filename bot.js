@@ -72,11 +72,13 @@ client.on
 			// Strip out command prefix
 			let cmdMsg = message.content.substring(1, message.content.length);
 			client.channels.find('name', 'raidlog').send('cmdMsg: ' + cmdMsg);
+
 			// raid start command
 			if 		(cmdMsg === 'raid_start')
 			{
 				client.channels.find('name', 'raidlog').send('Calling raid_start');
 				// Check privileges of user that sent command here
+
 				// First check if the user who issued the command is in a voice channel
 				// Not sure if empty string or undefined returned
 				if (typeof message.member.voiceChannelID)
@@ -86,6 +88,7 @@ client.on
 					
 				}
 			}
+
 			// raid end command
 			else if (cmdMsg === 'raid_end')
 			{
@@ -96,6 +99,7 @@ client.on
 				if (activeRaids.has(message.member.voiceChannelID))
 				{
 					activeRaids[message.member.voiceChannelID].update();
+
 					client.channels.find('name', 'raidlog').send(activeRaids[message.member.voiceChannel].getReport());
 					
 				}
@@ -105,11 +109,13 @@ client.on
 					client.channels.find('name', 'raidlog').send('No active raid is registered to your current voice channel!');
 				}
 			}
+
 			// move raid command
 			// Move the raid to a different channel without ending the logging session
 			// If a raid is already active in the specified channel, join the two raids together (?)
 			else if (cmdMsg === 'raid_move')
 			{
+
 			}
 		} // end check cmd prefix block
 		*/
@@ -139,14 +145,14 @@ client.on
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
-  var mydate = Math.floor(Date.now() / 1000)	
+
 
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
-	
+
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
 	 if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate );
+		client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
 	 }
 
   } else if(newUserChannel === undefined){
@@ -154,7 +160,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
 	if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate );
+		client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
 	}
   } else if (oldUserChannel === newUserChannel){
 		// user muted or unmuted themselves. Ignore the event.
@@ -162,10 +168,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   else{
 	  // we don't care about AFK
 	  if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate );
+		client.channels.find("name", "raidlog").send(oldMember + " Left Channel " + oldUserChannel);
 	  }
 	  if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate);
+		client.channels.find("name", "raidlog").send(newMember + " Joined Channel " + newUserChannel);
 	  }
   }
   
