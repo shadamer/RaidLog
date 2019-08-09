@@ -140,7 +140,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
   var mydate = Math.floor(Date.now() / 1000)
-  var mytime = Date.now().toTimeString()
+  var newdate = Date.now()
+  var mytime = newdate.toTimeString()
 
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
 	
