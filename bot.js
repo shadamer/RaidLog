@@ -139,8 +139,11 @@ client.on
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
-  var mydate = Math.floor(Date.now() / 1000)
-  var newdate = Date.now()
+  //var newdate = Date.now()
+  var newdate = new Date()
+  var mydate = Math.floor(newdate / 1000)
+  var mytime = newdate.toTimeString()
+  
   
 
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
@@ -148,7 +151,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
 	 if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + newdate );
+		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime );
 	 }
 
   } else if(newUserChannel === undefined){
@@ -156,7 +159,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
 	if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + newdate);
+		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
 	}
   } else if (oldUserChannel === newUserChannel){
 		// user muted or unmuted themselves. Ignore the event.
@@ -164,10 +167,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   else{
 	  // we don't care about AFK
 	  if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + newdate);
+		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
 	  }
 	  if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + newdate);
+		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime);
 	  }
   }
   
