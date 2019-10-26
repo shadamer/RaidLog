@@ -168,7 +168,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     // User leaves a voice channel
 	//client.message.send(author, "Left Channel");
 	if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
+		//client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
+		guildID.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
 	}
   } else if (oldUserChannel === newUserChannel){
 		// user muted or unmuted themselves. Ignore the event.
@@ -176,10 +177,12 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   else{
 	  // we don't care about AFK
 	  if (oldUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
+		//client.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
+		guildID.channels.find("name", "raidlog").send(oldMember + " |LEFT| " + oldUserChannel + "|" + mydate + "|" + mytime);
 	  }
 	  if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime);
+		//client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime);
+		guildID.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime);
 	  }
   }
   
