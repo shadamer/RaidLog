@@ -146,7 +146,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   
   
 	// Get a Guild by ID
-	var guildID = client.guilds.get("the guild id");
+	//var guildID = client.guilds.get("the guild id");
+	var guildID = oldMember.guild;
 	// Returns <Guild>
 	// Get a Channel by ID
 	var guildChannel = client.channels.get("the channel id");
