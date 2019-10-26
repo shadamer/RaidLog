@@ -145,7 +145,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   var mytime = newdate.toTimeString()
   
   
-	// Get a Guild by ID
+	// Get a Guild by ID - this is important so we write a message to that guild's raidlog channel
 	//var guildID = client.guilds.get("the guild id");
 	var guildID = oldMember.guild;
 	// Returns <Guild>
@@ -159,7 +159,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
 	 if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + guildID + "|" + newUserChannel + "|" + mydate + "|" + mytime );
+		//client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + guildID + "|" + newUserChannel + "|" + mydate + "|" + mytime );
+		guildID.channels.find("name", "raidlog").send(newMember + " |JOINED| " + guildID + "|" + newUserChannel + "|" + mydate + "|" + mytime );
 	 }
 
   } else if(newUserChannel === undefined){
