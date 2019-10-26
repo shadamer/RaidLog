@@ -145,13 +145,20 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   var mytime = newdate.toTimeString()
   
   
+	// Get a Guild by ID
+	var guildID = client.guilds.get("the guild id");
+	// Returns <Guild>
+	// Get a Channel by ID
+	var guildChannel = client.channels.get("the channel id");
+  
+  
 
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
 	
      // User Joins a voice channel
 	 //client.message.send(author, "Joined Channel");
 	 if (newUserChannel != 'AFK'){
-		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + newUserChannel + "|" + mydate + "|" + mytime );
+		client.channels.find("name", "raidlog").send(newMember + " |JOINED| " + guildID + "|" + newUserChannel + "|" + mydate + "|" + mytime );
 	 }
 
   } else if(newUserChannel === undefined){
